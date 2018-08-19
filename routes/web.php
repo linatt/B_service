@@ -11,6 +11,13 @@
 |
 */
 
-$router->get('/answerToA', function () use ($router) {
-    return 'Antwort vom B-Service!';
+
+$router->group([
+  'middleware' => 'jwt.auth'
+],
+function() use ($router) {
+  $router->post('/answerToA', function () use ($router) {
+      return 'Antwort vom B-Service!';
+  });
+
 });
