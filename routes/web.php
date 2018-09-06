@@ -21,3 +21,13 @@ function() use ($router) {
   });
 
 });
+
+$router->group([
+  'middleware' => 'auth'
+],
+function() use ($router) {
+  $router->post('/pasetoAnswerToA', function () use ($router) {
+      return 'Antwort vom B-Service!';
+  });
+
+});
